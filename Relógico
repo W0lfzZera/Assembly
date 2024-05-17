@@ -1,0 +1,42 @@
+ram 100 0
+ram 101 1
+ram 102 60
+
+ram 200 0
+ram 201 1
+ram 202 60
+
+ram 300 0
+ram 301 1
+ram 302 24
+
+
+cseg
+org Relogio
+lda ac, 100
+
+org Segundos
+add ac, 101
+str 100, ac
+sub ac, 60
+je Minutos
+lda ac, 100
+jmp Segundos
+
+org Minutos
+lda ac, 200
+add ac, 201
+je 
+str 200, ac
+
+
+
+je Horas
+lda ac, 200
+jmp Minutos
+
+
+org Horas
+
+
+jmp Relogio
